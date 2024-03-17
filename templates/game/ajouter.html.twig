@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+{% block title %}Gaming!{% endblock %}
+  {% block stylesheets %}
+           <link rel="stylesheet" type="text/css" href="{{asset('css/app.css')}}" />
+        {% endblock %}
+{% block body %}
+<div class="background">
+
+ 
+
+    {% block titre %} {% endblock %}
+   
+
+ {{ form_start(f, {'attr': {'class': 'form-container'}}) }}
+    <h1>Let's Play !</h1>
+    {{ form_widget(f) }}
+    
+{{ form_end(f) }}
+
+
+{% endblock %}

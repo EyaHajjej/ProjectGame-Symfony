@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<div class="background" >
+  <div class="background-color" >
+<h2 >Liste des joueurs | <small> <a href="{{ path('Ajouter')}}">Ajouter</a> </small> </h2>
+{{ form_start(form)}} 
+{{ form_widget(form)}}
+{{ form_end(form)}}
+</div>
+<table class="styled-table">
+<thead>
+<tr>
+<th>#</th>
+<th  >Joueur</th>
+<th>Date</th>
+<th>Score</th>
+<th></th>
+
+</tr>
+</thead>
+<tbody >
+
+{% for joueur in lesJoueurs %}
+<tr>
+<td>{{joueur.id}}</td>
+<td>{{joueur.nom | upper}}</td>
+<td>{{joueur.getBornAt()| date('d/m/Y')}}</td>
+<td>{{joueur.score}}</td>
+<td>
+
+<a class="btn btn-primary" href="#">Voir</a>
+
+<a class="btn btn-warming" href="{{ path('jou_delete', {'id':joueur.id }) }}"onclick="return confirm('Are you sure to delete!{{ joueur.nom}}')">Supprimer</a>
+<a class="btn btn-info" href="{{ path('edit_gamer', {'id':joueur.id }) }}">Modifier</a>
+
+</td>
+</tr>
+{% else %}
+<tr>
+<td colspan="7">Aucun abonné</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+</div>
+
+
+
+{% endblock %}

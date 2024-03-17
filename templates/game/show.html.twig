@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+{% block title %}{{parent()}} - Edit{% endblock %}
+{% block titre %}{{parent()|upper}} -  consultation de {{game.getTitre()}}{% endblock %}
+
+{% block body %}
+<h1> id{{game.getid()}}</h1><br>
+<h1> Type{{game.getType()}}</h1><br>
+<h2> Le nombre du joueur {{game.getnbrJoueur() }}</h2>
+<h3> Editeur : {{game.getEditeur() }}</h3>
+<h3>Image</h3>
+{% if game.image is not null %}
+<img src="{{game.image.url}}" alt="{{game.image.alt}}" height="100">
+{% endif %}
+<h3> Les Joueurs</h3>
+{% for joueur in listJoueurs %}
+  <h4> Joueur </h4><br>
+  <ul type="square">
+  <li>{{joueur.nom}}</li>
+  <li>{{joueur.email}}</li>
+  <li>{{joueur.score}}</li>
+   <li>{{joueur.born_at | date('d/m/Y')}}</li>
+ 
+
+  <li> ===================================</li>
+  {% endfor  %}
+</ul>
+
+{% endblock  %}
